@@ -10,8 +10,7 @@ function firstTenSquare(){
 }
 //Upg 2 nästlade loop 0 - 10 multiplikationstabell; 
 function multiplicationTable(){ //Kan välja vilken mult tabell ;) för utveckling 
-    let a = 10
-    console.log(a);
+   
     for(let i =0;i <=10;i++){//Tar med mult med 0 Hör till ;) 
         
         for(n=1; n <=10;n++) //allt gånger 0 är ju noll xD
