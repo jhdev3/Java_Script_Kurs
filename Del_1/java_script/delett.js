@@ -61,10 +61,11 @@ function guessTheNumber(){
 
 //Upg4 
 //Rövarspråket
-
+//-> Utveckling om man vill kolla pormptInput så det inte är en siffra just nu funkar det som en konsonant:) 
 function rovarSprak(){
 
-    let promptInput = prompt("Skriv något du vill ha översatt till rövarspråket :)");
+    let promptInput = "";
+    promptInput = prompt("Skriv något du vill ha översatt till rövarspråket :)");
     let rovarText = "";//typ bestämmer variabeln till en sträng. 
     const vokals = "aeiouyåäöAEIOUYÅÄÖ"; //Går att lägga mellanslag här också om man vill så behvös det inte i if satsen
     console.log(promptInput);
