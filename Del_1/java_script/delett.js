@@ -61,6 +61,26 @@ function guessTheNumber(){
 //Rövarspråket
 
 function rovarSprak(){
-    
 
+    let promptInput = prompt("Skriv något du vill ha översatt till rövarspråket :)");
+    let rovarText = "";
+    const vokals = "aeiouyåäöAEIOUYÅÄÖ";
+    console.log(promptInput);
+
+    for(let c of promptInput)
+    {
+        if(vokals.search(c) != -1 || c == ' ')//returns -1 när den inte hittar :)
+        {
+            rovarText += c;
+        }    
+        else
+        {
+            rovarText += c+"o"+c;
+        }
+        //console.log(c);
+        //console.log(rovarText);
+    }
+    console.log("Rövarspråket:");
+    console.log(rovarText);
+    alert(rovarText);
 }
