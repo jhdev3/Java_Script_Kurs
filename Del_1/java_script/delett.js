@@ -23,25 +23,44 @@ function multiplicationTable(){ //Kan välja vilken mult tabell ;) för utveckli
 }
 
 //Upg 3 gissa talet
-//Prombt ger vialtion varning gör att det tar långt tid vid onclick. 
+//Prombt ger vialtion varning gör att det tar långt tid vid onclick på grund av prombt. 
+//Violation varningen fixas i upg 6 :) 
 function guessTheNumber(){
     let answer = Math.floor(Math.random() * 100 + 1); //random generator 1-100  
     let maxGuess = 0; 
     let guessRight = false;
     let prombtText = "Gissa på ett tal mellan 1 - 100, du har 3 försök på dig"; 
     let guess;
-
     while(!guessRight && maxGuess < 3){
-    
+        
     guess=prompt(prombtText);
-    ++maxGuess;    
-    console.log( maxGuess);
-    console.log( guess);
 
-
-    console.log( answer + "   ");
-
-
+    if(guess==answer){
+        guessRight = true;
     }
+    else if(guess > answer ){
+         prombtText =  guess + " gissa på ett mindre tal ;) Gissningar kvar: " + (2 - maxGuess); 
+         console.log( "mindre");
+
+    } 
+    else{
+         prombtText =  guess + " gissa på ett större tal ;) Gissningar kvar:  " + (2 - maxGuess); 
+         console.log( "större");
+    }
+    
+    ++maxGuess;     
+    }
+
+    if(guessRight)
+        alert("Grattis du gissade rätt");
+    else
+        alert("Tyvärr försök igen talet var: " + answer);
 }
 
+//Upg4 
+//Rövarspråket
+
+function rovarSprak(){
+    
+
+}
