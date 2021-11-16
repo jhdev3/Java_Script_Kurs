@@ -32,23 +32,26 @@ function guessTheNumber(){
     let guess;
     while(!guessRight && maxGuess < 3){
         
-    guess=prompt(prombtText);
+        guess=prompt(prombtText);
 
-    if(guess==answer){
-        guessRight = true;
-    }
-    else if(guess > answer ){
-         prombtText =  guess + " gissa på ett mindre tal ;) Gissningar kvar: " + (2 - maxGuess); 
-         console.log( "mindre");
+        if(guess==answer)
+        {
+            guessRight = true;
+        }
+        else if(guess > answer )
+        {
+            prombtText =  guess + " gissa på ett mindre tal ;) Gissningar kvar: " + (2 - maxGuess); 
+            console.log( "mindre");
 
-    } 
-    else{
-         prombtText =  guess + " gissa på ett större tal ;) Gissningar kvar:  " + (2 - maxGuess); 
-         console.log( "större");
+        } 
+        else
+        {
+            prombtText =  guess + " gissa på ett större tal ;) Gissningar kvar:  " + (2 - maxGuess); 
+            console.log( "större");
+        }
+        ++maxGuess;  
     }
     
-    ++maxGuess;     
-    }
 
     if(guessRight)
         alert("Grattis du gissade rätt");
@@ -62,8 +65,8 @@ function guessTheNumber(){
 function rovarSprak(){
 
     let promptInput = prompt("Skriv något du vill ha översatt till rövarspråket :)");
-    let rovarText = "";
-    const vokals = "aeiouyåäöAEIOUYÅÄÖ";
+    let rovarText = "";//typ bestämmer variabeln till en sträng. 
+    const vokals = "aeiouyåäöAEIOUYÅÄÖ"; //Går att lägga mellanslag här också om man vill så behvös det inte i if satsen
     console.log(promptInput);
 
     for(let c of promptInput)
