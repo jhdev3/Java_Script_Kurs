@@ -1,0 +1,22 @@
+.gissa_talet{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto; 
+    height: 10vh;
+} 
+.form{
+    width: 500px;
+    display: inline-block;
+    background-color: coral;
+    }
+.form_out{
+    width: 300px;
+
+    display: inline-block;
+    text-align: left;
+    background-color: rgb(115, 255, 80);
+
+}
+button{
+    margin-left: 1em;
+}    
