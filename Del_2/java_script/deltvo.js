@@ -2,51 +2,35 @@
 
 //Upg 6 gissa talet
 
-let guess = {
-     answer:  0, 
-     maxGuess: 0,
-     guessRight: false,
-     prombtText: "Gissa på ett tal mellan 1 - 100, du har 3 försök på dig", 
-     guess: 0,
+let guessObj = {
+     answer:  Math.floor(Math.random() * 100 + 1), 
+     right: false,
+     text: "Gissa på ett tal mellan 1 - 100", 
+     numberOfattempts: 0,
   };
 
-
-  function test()
-  {
-    guess.answer = Math.floor(Math.random() * 100 + 1);
-    guessTheNumber(guess);
-  }
 //Använda mig a jQuery
 //Violation varningen fixas i upg 6 :) 
-function guessTheNumber(obj){
+function guessTheNumber(guess){
     
-    while(!obj.guessRight && obj.maxGuess < 3){
-        obj.guess=prompt(obj.prombtText);
-
-        if(obj.guess==obj.answer)
+        if(guess==guessObj.answer)
         {
-            obj.guessRight = true;
+            guessObj.right = true;
+            guessObj.text = "Grattis du gissade rätt";
         }
-        else if(obj.guess > obj.answer )
+        else if(guess > guessObj.answer )
         {
-            obj.prombtText =  obj.guess + " gissa på ett mindre tal ;) Gissningar kvar: " + (2 - obj.maxGuess); 
+            guessObj.text = "Gissa på ett mindre tal";
             console.log( "mindre");
-
         } 
         else
         {
-            prombtText =  guess + " gissa på ett större tal ;) Gissningar kvar:  " + (2 - obj.maxGuess); 
+            guessObj.text = "Gissa på ett större tal";
             console.log( "större");
         }
-        ++obj.maxGuess;  
-    }
-    
-
-    if(obj.guessRight)
-        alert("Grattis du gissade rätt");
-    else
-        alert("Tyvärr försök igen talet var: " + obj.answer);
-}
+        ++guessObj.numberOfattempts;  
+ 
+ }
 //Upg6 
 //Rövarspråket -> använda mig av DOM:)
 //-> Utveckling om man vill kolla pormptInput så det inte är en siffra just nu funkar det som en konsonant:) 
@@ -78,22 +62,42 @@ function rovarSprak(){
 
 //Jquery 
 //Körs bara när documentet dvs hemsidan har laddat klart :) Bonus att läga scripten längst ner i bodyn ;) 
+
+
 $(document).ready(function(){
 
-
-
-
-    //Fun tests 
-    $("p").hover(function(){
-
-        $(this).text("Hover test");
     
-    }, function(){
-        $(this).css("border", "5px solid black");
+    $("#guessID123").submit(function (e) {  //e = event 
+
+        guessTheNumber($("#guessNumber").val());
+       // console.log( guessObj.answer);
+       // console.log(guessObj.right);
+       $("#attempts").text(`Försök: ${guessObj.numberOfattempts}`).show();
+       $("#tips").text(guessObj.text).show();
+       if(!guessObj.right)
+          $("#tips").css("background-color", "rgba(230, 49, 49, 0.514)"); //röd
+        else
+           $("#tips").css("background-color", "rgb(77, 207, 77)"); //grön
+      e.preventDefault();//Så att inte form event triggas normalt sickas form till en annan sida
+
     });
+
+   
+
+
+  
   });
 
 
 
 
 
+  //Fun tests 
+    /*
+    $("p").hover(function(){
+
+        $(this).text("Hover test");
+    
+    }, function(){
+        $(this).css("border", "5px solid black");
+    });*/ 

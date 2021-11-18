@@ -9,25 +9,26 @@
     
 </head>
 <body>
-    <p>Upg6 gissat talet ett numer mellan 1-100, jQuery</p>
+    <p>Upg6 <br> Gissa på ett numer mellan 1-100, <br> Använder: jQuery</p>
+        <!-- Gissa talet -->
 
     <div class="gissa_talet"> 
 
         <div class="form"> 
             <form id="guessID123" action="#">
-                <label for="guess_number">Gissa Talet: </label>
-                <input type="number" name="guess_number" id="guessNumber">
-                <input type="submit" value="Gissa talet" id="submitNumber">
+                <label class="label" for="guess_number">Gissa Talet: </label>
+                <input type="number" name="guess_number"  required id="guessNumber">
+                <input type="submit" value="Gissa talet"  id="submitNumber">
             </form>
         </div>
-        <div id="guess_number_form" class="form_out"> 
+        <div class="form_out"> 
+            <p id="attempts"> Frösök </p>
+            <p class="bold"> <span id="tips"> tips </span> </p> 
+
+          <!--  <button id="reset_guess"> Starta om </button> -->
 
         </div>
-
-        <button onclick="test()"> Test gissa</button>
-
     </div>
-    <!-- Gissa talet -->
 
     
 
