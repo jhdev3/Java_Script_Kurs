@@ -2,17 +2,12 @@
 
 //Upg 6 gissa talet
 
-let guessObj = {
+const guessObj = {
      answer:  Math.floor(Math.random() * 100 + 1), 
      right: false,
      text: "Gissa på ett tal mellan 1 - 100", 
      numberOfattempts: 0,
-  };
-
-//Använda mig a jQuery
-//Violation varningen fixas i upg 6 :) 
-function guessTheNumber(guess){
-    
+     guessNumber: function(guess){
         if(guess==guessObj.answer)
         {
             guessObj.right = true;
@@ -29,8 +24,10 @@ function guessTheNumber(guess){
             console.log( "större");
         }
         ++guessObj.numberOfattempts;  
- 
- }
+     }
+  };
+
+
 //Upg6 
 //Rövarspråket -> använda mig av DOM:)
 //-> Utveckling om man vill kolla pormptInput så det inte är en siffra just nu funkar det som en konsonant:) 
@@ -69,15 +66,20 @@ $(document).ready(function(){
     
     $("#guessID123").submit(function (e) {  //e = event 
 
-        guessTheNumber($("#guessNumber").val());
+        if(!guessObj.right)
+            guessObj.guessNumber($("#guessNumber").val());
        // console.log( guessObj.answer);
        // console.log(guessObj.right);
        $("#attempts").text(`Försök: ${guessObj.numberOfattempts}`).show();
        $("#tips").text(guessObj.text).show();
+      
        if(!guessObj.right)
           $("#tips").css("background-color", "rgba(230, 49, 49, 0.514)"); //röd
         else
+        {
            $("#tips").css("background-color", "rgb(77, 207, 77)"); //grön
+          
+        }
       e.preventDefault();//Så att inte form event triggas normalt sickas form till en annan sida
 
     });
