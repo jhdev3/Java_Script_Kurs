@@ -7,6 +7,12 @@ const guessObj = {
      right: false,
      text: "Gissa på ett tal mellan 1 - 100", 
      numberOfattempts: 0,
+     reset(){
+        this.answer =Math.floor(Math.random() * 100 + 1);
+        this.right= false;
+        this.text="Gissa på ett tal mellan 1 - 100";
+        this.numberOfattempts="0";
+     },
      guessNumber: function(guess){
         if(guess==guessObj.answer)
         {
@@ -31,15 +37,13 @@ const guessObj = {
 //Upg6 
 //Rövarspråket -> använda mig av DOM:)
 //-> Utveckling om man vill kolla pormptInput så det inte är en siffra just nu funkar det som en konsonant:) 
-function rovarSprak(){
+function rovarSprak(input){
 
-    let promptInput = "";
-    promptInput = prompt("Skriv något du vill ha översatt till rövarspråket :)");
     let rovarText = "";//typ bestämmer variabeln till en sträng. 
     const vokals = "aeiouyåäöAEIOUYÅÄÖ"; //Går att lägga mellanslag här också om man vill så behvös det inte i if satsen
     console.log(promptInput);
 
-    for(let c of promptInput)
+    for(let c of input)
     {
         if(vokals.search(c) != -1 || c == ' ')//returns -1 när den inte hittar :)
         {
@@ -54,21 +58,18 @@ function rovarSprak(){
     }
     console.log("Rövarspråket:");
     console.log(rovarText);
-    alert(rovarText);
 }
 
 //Jquery 
 //Körs bara när documentet dvs hemsidan har laddat klart :) Bonus att läga scripten längst ner i bodyn ;) 
-
-
 $(document).ready(function(){
 
     
     $("#guessID123").submit(function (e) {  //e = event 
 
-        if(!guessObj.right)
+        if(!guessObj.right)  
             guessObj.guessNumber($("#guessNumber").val());
-       // console.log( guessObj.answer);
+       console.log( guessObj.answer);
        // console.log(guessObj.right);
        $("#attempts").text(`Försök: ${guessObj.numberOfattempts}`).show();
        $("#tips").text(guessObj.text).show();
@@ -78,16 +79,19 @@ $(document).ready(function(){
         else
         {
            $("#tips").css("background-color", "rgb(77, 207, 77)"); //grön
-          
+           $( "#reset_guess" ).toggle();        
         }
       e.preventDefault();//Så att inte form event triggas normalt sickas form till en annan sida
 
+    }); 
+    
+    $("#reset_guess").click(function() {
+        guessObj.reset();
+        $("#attempts").text(`Försök: ${guessObj.numberOfattempts}`).show();
+        $("#tips").text(guessObj.text).show();
+        $("#tips").css("background-color", "white"); 
+        $( "#reset_guess" ).toggle();        
     });
-
-   
-
-
-  
   });
 
 

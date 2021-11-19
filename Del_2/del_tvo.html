@@ -16,24 +16,27 @@
 
         <div class="form"> 
             <form id="guessID123" action="#">
-                <label class="label" for="guess_number">Gissa Talet: </label>
-                <input type="number" name="guess_number"  required id="guessNumber">
+                <label class="label" for="guess_number">Gissa Talet: </label> <br>
+                <input type="number" name="guess_number"  required id="guessNumber"><br>
                 <input type="submit" value="Gissa talet"  id="submitNumber">
+                <input type="reset" value="Starta om" id="reset_guess">
+
             </form>
         </div>
         <div class="form_out"> 
             <p id="attempts"> Frösök </p>
-            <p class="bold"> <span id="tips"> tips </span> </p> 
-          <!--  <button id="reset_guess"> Starta om </button> -->
+            <p class="bold"> <span id="tips"> tips </span> 
+               
+            </p> 
+         
         </div>
     </div>
 
-    
 
     <p>Upg6 Rövarspråket, DOM </p>
 
     <!--Importerar jquery, går lika bra med cdn men här är uncompressed, development jQuery 3.6.0 ifall jag vill kolla närmare på funktionerna :)
-       -->
+       <button id="reset_guess"> Starta om </button> -->
     <script src ="java_script/jquery.js"></script>
 
     <script src ="java_script/deltvo.js"></script> 

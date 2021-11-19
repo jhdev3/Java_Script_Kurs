@@ -23,9 +23,14 @@ button{
     margin-left: 1em;
 }   
 input{
-    display: block;
     margin: 1em; 
 }
+
 .bold{
     font-weight: bold;
+    
 }
+#reset_guess{
+    display: none;
+    /* display: none; */    
+}   
