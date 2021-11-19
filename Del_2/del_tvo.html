@@ -9,37 +9,49 @@
     
 </head>
 <body>
-    <p>Upg6 <br> Gissa på ett numer mellan 1-100, <br> Använder: jQuery</p>
         <!-- Gissa talet -->
 
     <div class="gissa_talet"> 
-
+        <p>Upg6: Gissa på ett numer mellan 1-100, <br> Använder: jQuery</p>
         <div class="form"> 
             <form id="guessID123" action="#">
                 <label class="label" for="guess_number">Gissa Talet: </label> <br>
-                <input type="number" name="guess_number"  required id="guessNumber"><br>
-                <input type="submit" value="Gissa talet"  id="submitNumber">
+                <input type="number" name="guess_number" id="guessNumber" required><br>
+                <input type="submit" value="Gissa talet">
                 <input type="reset" value="Starta om" id="reset_guess">
 
             </form>
         </div>
         <div class="form_out"> 
-            <p id="attempts"> Frösök </p>
-            <p class="bold"> <span id="tips"> tips </span> 
-               
-            </p> 
-         
+            <p id="attempts"> Försök: </p>
+            <p class="bold"> <span id="tips"> Gissa på ett tal mellan 1 - 100 </span> </p> 
         </div>
     </div>
 
-
     <p>Upg6 Rövarspråket, DOM </p>
+
+    <div class="gird_cont">
+        <div class="grid-col-1"> 
+            <form id="rovarID123" action="#"> 
+                <label class="label" for="encode">Gissa Talet: </label> <br>
+                <input type="text" name="encode" id="encodeRovar" required><br>
+                <input type="submit" value="Översätt till Rövarspråket">
+                <input type="reset" value="Reset">
+            </form>
+        </div>
+        <div class="grid-col-2">    
+            <p> Översatt till rövarspråket: </p>
+            <p id=rovarOut> </p>
+        </div>
+   </div>
 
     <!--Importerar jquery, går lika bra med cdn men här är uncompressed, development jQuery 3.6.0 ifall jag vill kolla närmare på funktionerna :)
        <button id="reset_guess"> Starta om </button> -->
     <script src ="java_script/jquery.js"></script>
 
-    <script src ="java_script/deltvo.js"></script> 
+    <script src ="java_script/guess.js"></script> 
+
+    <script src ="java_script/rovarupg6.js"></script> 
 
 </body>
 </html>

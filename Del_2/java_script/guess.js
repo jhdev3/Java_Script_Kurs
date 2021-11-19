@@ -1,6 +1,21 @@
 //inlämning del två
-
 //Upg 6 gissa talet
+//guessObj objekt med lite olika typer av funktioner tex reset factorial osv. 
+
+//borde göra det som en class med konstruktor men går att göra det på andra sätt med
+//Javascript är dynamiskt
+
+//object litural inte så bra praxis eftersom jag har flera funktioner Alla varibeler är synliga hela tiden, not good ;) 
+
+//göra det till ett "objekt" utan class lägger jag det i en funktion
+//Med stor bokstav blir det "en konstruktor"
+/*
+function GuessObj(){
+    sedan variabler
+    +funktioner. etc
+    och använda this."name" = funktion eller variabel osv.
+}*/
+//Skapa sedan objektet genom let obj = new GuessObj();   :) 
 
 const guessObj = {
      answer:  Math.floor(Math.random() * 100 + 1), 
@@ -34,42 +49,17 @@ const guessObj = {
   };
 
 
-//Upg6 
-//Rövarspråket -> använda mig av DOM:)
-//-> Utveckling om man vill kolla pormptInput så det inte är en siffra just nu funkar det som en konsonant:) 
-function rovarSprak(input){
-
-    let rovarText = "";//typ bestämmer variabeln till en sträng. 
-    const vokals = "aeiouyåäöAEIOUYÅÄÖ"; //Går att lägga mellanslag här också om man vill så behvös det inte i if satsen
-    console.log(promptInput);
-
-    for(let c of input)
-    {
-        if(vokals.search(c) != -1 || c == ' ')//returns -1 när den inte hittar :)
-        {
-            rovarText += c;
-        }    
-        else
-        {
-            rovarText += c+"o"+c;
-        }
-        //console.log(c);
-        //console.log(rovarText);
-    }
-    console.log("Rövarspråket:");
-    console.log(rovarText);
-}
-
 //Jquery 
 //Körs bara när documentet dvs hemsidan har laddat klart :) Bonus att läga scripten längst ner i bodyn ;) 
+//Dock behövs det inte då skripten körs vid "onklick events" dvs form och input type måste laddas in för ett ens kunna trycka på knapparna.
 $(document).ready(function(){
 
-    
+
     $("#guessID123").submit(function (e) {  //e = event 
 
         if(!guessObj.right)  
             guessObj.guessNumber($("#guessNumber").val());
-       console.log( guessObj.answer);
+       //console.log( guessObj.answer);
        // console.log(guessObj.right);
        $("#attempts").text(`Försök: ${guessObj.numberOfattempts}`).show();
        $("#tips").text(guessObj.text).show();
@@ -97,13 +87,3 @@ $(document).ready(function(){
 
 
 
-
-  //Fun tests 
-    /*
-    $("p").hover(function(){
-
-        $(this).text("Hover test");
-    
-    }, function(){
-        $(this).css("border", "5px solid black");
-    });*/ 
