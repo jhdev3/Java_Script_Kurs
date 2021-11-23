@@ -6,15 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript</title>
     <link rel="stylesheet" href="css/styles.css">
-    
+        <!--Importerar jquery, går lika bra med cdn men här är uncompressed, development jQuery 3.6.0 ifall jag vill kolla närmare på funktionerna :)
+        -->    
+    <script src ="java_script/jquery.js"></script>
+ 
 </head>
 <body>
         <!-- Gissa talet -->
-
+        <!-- Forms behöver inte name = egentligen nu när jag inte sänder forms:
+            viktigt att veta om man ska skicka forms är det de som har name input värden som skickas.
+        -->
     <div class="gissa_talet"> 
         <p>Upg6: Gissa på ett numer mellan 1-100, <br> Använder: jQuery</p>
         <div class="form"> 
-            <form id="guessID123" action="#">
+            <form id="guessID123" action ="#">
                 <label class="label" for="guess_number">Gissa Talet: </label> <br>
                 <input type="number" name="guess_number" id="guessNumber" required><br>
                 <input type="submit" value="Gissa talet">
@@ -29,7 +34,6 @@
     </div>
 
     <p>Upg6 Rövarspråket, DOM </p>
-
     <div class="gird_cont">
         <div class="grid-col-1"> 
             <form id="rovarID123" action="#"> 
@@ -45,13 +49,60 @@
         </div>
    </div>
 
-    <!--Importerar jquery, går lika bra med cdn men här är uncompressed, development jQuery 3.6.0 ifall jag vill kolla närmare på funktionerna :)
-       <button id="reset_guess"> Starta om </button> -->
-    <script src ="java_script/jquery.js"></script>
+   <p>Upg 7: Intelligent reseformulär</p> 
+   <div class="flex_cont" > 
+        <div class="flex_form">
+            <form id="rese_form" action="#">                <!--Användarens boknings upg :)-->
+                <div id ="userDetails">
+                    <label for = "Fname" > Förnamn: </label>
+                    <input type="text" id="Fname"> 
+                    <label for = "familyName" > Efternamn: </label>
+                    <input type="text" id="familyName">  <br> 
+
+                    <label for = "userEmail" > Email: </label>
+                    <input type="text"  id="userEmail"> <br>
+                    <label for = "usertnummer" > Telefonnummer: </label>
+                    <input type="text" id="usertnummer"> <br>
+                    <label  for = "userGAddress" > Gatuadress: </label> 
+                    <input type="text"  id="userGAddress"> <br>
+                    <label  for = "userPostnummer" > Postnummer: </label>
+                    <input type="text"  id="userPostnummer">
+                    <label  for = "userStad" > Stad: </label>
+                    <input type="text"  id="userStad"> 
+                </div>
+                <br>
+                <button id="userDetailsButton"> Användar uppgifter:  </button>
+
+                <br>
+               
+                <div id="reseDetails">
+                <!--Resan upg :)-->
+                <label class="resa" for="resOrt">Val av ort: </label>
+                <input type ="text" id ="resOrt"> 
+                <label class="resa" for="avReseDatum">Avresedatum: </label>
+                <input type ="date" id ="avReseDatum"> 
+                <label class="resa" for="HemReseDatum">Hemresedatum: </label>
+                <input type ="date" id ="HemReseDatum"> 
+
+                <input class ="resa" type="submit" value="Boka resa">
+            </div>
+            </form>
+
+
+        </div>
+        <div class="flex_form_output"> 
+            <h1> outPut:</h1>
+        </div>
+   </div>
+
+
+
+
 
     <script src ="java_script/guess.js"></script> 
-
     <script src ="java_script/rovarupg6.js"></script> 
+    <script src ="java_script/intelligentform.js" ></script>
+
 
 </body>
 </html>

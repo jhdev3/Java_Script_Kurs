@@ -16,15 +16,18 @@
 
 
 }
-button{
-    margin-left: 1em;
-} 
+
+#guessID123 > input{
+    margin: 1em;
+}
+#rovarID123 > input{
+    margin: 1em;
+}
+
 .label{
     margin-left: 1em;
 }   
-input{
-    margin: 1em; 
-}
+
 
 .bold{
     font-weight: bold;
@@ -46,4 +49,45 @@ input{
 }
 .grid-col-2{
     grid-column: 2/3;
+}
+
+
+.flex_cont{
+    display: flex;
+    align-content: flex-start;
+    /*flex-flow: column wrap; */
+
+
+}
+
+.flex_form{
+    order: 1;
+    align-content: flex-start;
+}
+
+#rese_form{
+    display: block;
+
+}
+
+
+#rese_form > label{
+    padding: 0.5em;
+  
+}
+#rese_form > input{
+    
+    margin: 0.3em;
+}
+
+
+.flex_form_output{
+    order: 2;
+}
+.resa{
+    display: block;
+}
+
+#reseDetails{
+    display: block;
 }

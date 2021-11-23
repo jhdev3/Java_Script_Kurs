@@ -38,4 +38,7 @@ if(rovarForm != null){
 }    
 
 
-/* Document.querySelector() and Document.querySelectorAll() */
+/* Document.querySelector() and Document.querySelectorAll() 
+    istället för Element by ID etc :) 
+
+*/
