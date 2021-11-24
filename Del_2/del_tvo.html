@@ -33,14 +33,13 @@
         </div>
     </div>
 
-    <p>Upg6 Rövarspråket, DOM </p>
     <div class="gird_cont">
         <div class="grid-col-1"> 
+            <p>Upg6 Rövarspråket, DOM </p>
             <form id="rovarID123" action="#"> 
-                <label class="label" for="encode">Gissa Talet: </label> <br>
-                <input type="text" name="encode" id="encodeRovar" required><br>
+                <label class="label" for="encode">Översatt till rövarspråket: </label> <br>
+                <input type="text" name="encode" id="encodeRovar" pattern = "[a-öA-Ö\s]+" required><br>
                 <input type="submit" value="Översätt till Rövarspråket">
-                <input type="reset" value="Reset">
             </form>
         </div>
         <div class="grid-col-2">    
@@ -52,43 +51,44 @@
    <p>Upg 7: Intelligent reseformulär</p> 
    <div class="flex_cont" > 
         <div class="flex_form">
-            <form id="rese_form" action="#">                <!--Användarens boknings upg :)-->
-                <div id ="userDetails">
+            <div id ="userDetails">
+                <form id="user_form" action="#">                <!--Användarens boknings upg :)-->
                     <label for = "Fname" > Förnamn: </label>
-                    <input type="text" id="Fname"> 
+                    <input type="text" name = "firstName" id="Fname"> 
                     <label for = "familyName" > Efternamn: </label>
-                    <input type="text" id="familyName">  <br> 
+                    <input type="text" name = "familyName" id="familyName">  <br> 
 
                     <label for = "userEmail" > Email: </label>
-                    <input type="text"  id="userEmail"> <br>
+                    <input type="text" name="userEmail" id="userEmail"> <br>
                     <label for = "usertnummer" > Telefonnummer: </label>
-                    <input type="text" id="usertnummer"> <br>
-                    <label  for = "userGAddress" > Gatuadress: </label> 
-                    <input type="text"  id="userGAddress"> <br>
-                    <label  for = "userPostnummer" > Postnummer: </label>
-                    <input type="text"  id="userPostnummer">
-                    <label  for = "userStad" > Stad: </label>
-                    <input type="text"  id="userStad"> 
-                </div>
-                <br>
-                <button id="userDetailsButton"> Användar uppgifter:  </button>
+                    <input type="text" name="usertnummer" id="usertnummer"> <br>
 
-                <br>
+                    <label  for = "userGAddress" > Gatuadress: </label> 
+                    <input type="text" name="userGAddress" id="userGAddress"> <br>
+                    <label  for = "userPostnummer" > Postnummer: </label>
+                    <input type="text" name="userPostnummer" id="userPostnummer" size="5">
+                    <label  for = "userStad" > Stad: </label>
+                    <input type="text"  name="userStad" id="userStad"> 
+                    <br>
+                    <input type="submit" id="userDetailsButton" value= "Användar uppgifter">
+                </form>
+
+                <p id="userFormOut"> </p>
+            </div>
+              
                
                 <div id="reseDetails">
-                <!--Resan upg :)-->
-                <label class="resa" for="resOrt">Val av ort: </label>
-                <input type ="text" id ="resOrt"> 
-                <label class="resa" for="avReseDatum">Avresedatum: </label>
-                <input type ="date" id ="avReseDatum"> 
-                <label class="resa" for="HemReseDatum">Hemresedatum: </label>
-                <input type ="date" id ="HemReseDatum"> 
-
-                <input class ="resa" type="submit" value="Boka resa">
-            </div>
-            </form>
-
-
+                     <form id="bookTravel" action="#">
+                        <!--Resan upg :)-->
+                        <label class="resa" for="resOrt">Val av ort: </label>
+                        <input type ="text" id ="resOrt"> 
+                        <label class="resa" for="avReseDatum">Avresedatum: </label>
+                        <input type ="date" id ="avReseDatum"> 
+                        <label class="resa" for="hemReseDatum">Hemresedatum: </label>
+                        <input type ="date" id ="hemReseDatum"> 
+                        <input class ="resa" type="submit" value="Boka resa">
+                    </form>
+                </div>
         </div>
         <div class="flex_form_output"> 
             <h1> outPut:</h1>
@@ -102,7 +102,5 @@
     <script src ="java_script/guess.js"></script> 
     <script src ="java_script/rovarupg6.js"></script> 
     <script src ="java_script/intelligentform.js" ></script>
-
-
 </body>
 </html>

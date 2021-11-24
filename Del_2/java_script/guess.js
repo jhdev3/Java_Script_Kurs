@@ -22,7 +22,7 @@ const guessObj = {
      right: false,
      text: "Gissa på ett tal mellan 1 - 100", 
      numberOfattempts: 0,
-     reset(){
+     reset(){//kortare syntax för funktion
         this.answer =Math.floor(Math.random() * 100 + 1);
         this.right= false;
         this.text="Gissa på ett tal mellan 1 - 100";

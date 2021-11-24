@@ -1,5 +1,6 @@
 //Upg6 
 //Rövarspråket -> använda mig av DOM:)
+//hanterar dåliga inputs i html pattern
 
 function rovarSprak(input){
     let rovarText = "";
@@ -34,7 +35,7 @@ function encodeRovar(event){
 const rovarForm = document.getElementById("rovarID123");
 //console.log(rovarForm);
 if(rovarForm != null){
-    rovarForm.addEventListener("submit", encodeRovar);
+    rovarForm.addEventListener("submit", encodeRovar); // kan också lägga Eventlistner i windows.onload :)
 }    
 
 
