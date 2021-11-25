@@ -20,54 +20,60 @@ const patterns = {
 };
 const formUser = document.querySelector("#user_form"); //Save som time
 const inPuts = formUser.querySelectorAll('input');
-
+const reseBooking = document.querySelector("#bookTravel");
 
 //Notiferar vid felinmattning :) 
 function inFieldValidate(field)
 {
-        if(patterns[field.name].test(field.value))
+        field.setCustomValidity("");//Måste rensa för uppdatering
+     if(patterns[field.name].test(field.value))
         {
+            console.log(field.value);
+
             field.style.border = '1px solid green';
+            field.validity.valid = true;
+            //field.setAttribute("isvalid", "true");
         }
         else
         {
+            field.validity.valid = false;
+            field.setCustomValidity("Fel format din idiot ;)");
+            //field.setAttribute("isvalid", "false");
             field.style.border = '1px solid red';
         }
 }
-
-//= value.charAt(0).toUpperCase() + value.substring(1).toLowerCase();
-//Tittar till UserInputs
-function returnInput(inputselect){
-    let setValue = "Wrong";
-    let regexp = patterns[inputselect.name];
-    let check = regexp.test(inputselect.value);
-    if(check){
-        setValue = inputselect.value; 
-    }
-    inFieldValidate(inputselect);
-    return setValue;
-}
-
-//Validerar Hela User Formuläret xD
-function validateUser(){
-    const inputValues = [];
-    //inPuts.pop();
-    console.log(inPuts);
+//Skapar User data när formuläret är validerat xD
+function createUserData(){ 
     for(let i = 0; i < 7; i++){ //kör inte submit
-        inputValues.push(returnInput(inPuts[i]));
-       console.log(inPuts[i].value);
+        createPara(inPuts[i].value);
     } 
-    return inputValues;
-
+    formUser.style.display = "none";
+    reseBooking.style.display = "block";
 }
 //  document.querySelector("#userFormOut").textContent +=  inp.name + " : " + inp.value + "\n" ;
-
+//skriver ut skiten
+function createPara(value){
+    let para = document.createElement("P");
+    para.innerHTML = value;
+    document.querySelector("#userFormOut").appendChild(para);
+}
+//Behöver submita the formulär of HELL
 function submitUser(event){
-   
-    
-        console.log(validateUser());
-  
+    let fieldsRequired = true;
+    for(infield of inPuts){
+        if(infield.type != "submit")
+            inFieldValidate(infield);
+        if(infield.value ==="")
+        {
+            fieldsRequired = false;
+        }
+    }
+        //console.log(validateUser());
+            if(fieldsRequired != false)
+                createUserData();
 
+       
+       // formUser.hide();
     event.preventDefault();
 }
 
@@ -78,19 +84,19 @@ window.addEventListener('load', (event) => {
     formUser.addEventListener("submit", submitUser);
     
     for(infield of inPuts){
-
         if(infield.type != "submit"){
-            console.log(infield);
-
-            infield.addEventListener('onclick', (e)=> {
-              console.log(e.target);
-              console.log(infield);
-
-                // inFieldValidate(c);
-                
+           // console.log(infield);         
+             infield.addEventListener('blur', (event)=> {
+             event.target.style.background = '';
+             event.target.style.height = "2rem";
+             inFieldValidate(event.target);
+              //console.log(event.target);               
+            });
+            infield.addEventListener('focus', function(event){
+                event.target.style.background = 'pink';
+                event.target.style.height = "3rem";       
             });
         }
-
     }
 
 });
@@ -113,9 +119,4 @@ window.addEventListener('load', (event) => {
 
 //Test remove later
 
-function createLabel(form, input, text){
-    let newlabel = document.createElement("Label");
-    newlabel.setAttribute("for",input);
-    newlabel.innerHTML = text;
-    form.appendChild(newlabel);
-}
+

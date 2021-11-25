@@ -54,26 +54,28 @@
     grid-column: 2/3;
 }
 
-
-.flex_cont{
-    display: flex;
-    align-content: flex-start;
-    /*flex-flow: column wrap; */
-
-
+.grid-col-xxl{
+    grid-column: 1/4;
+    justify-self: center;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
-.flex_form{
-    order: 1;
-    align-content: flex-start;
-}
 
 #rese_form{
     display: block;
 
 }
 
-
+#user_form > input{
+    width: 100%;
+    height: 2rem;
+    font-size: 1.2em;
+}
+#userDetailsButton{
+    width: 30% !important;
+       
+}
 #rese_form > label{
     padding: 0.5em;
   
@@ -84,14 +86,12 @@
 }
 
 
-.flex_form_output{
-    order: 2;
-}
+
 .resa{
     display: block;
 }
 
-#reseDetails{
+#bookTravel{
     display: none;
 }
 
