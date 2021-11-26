@@ -62,11 +62,18 @@
 }
 
 
-#rese_form{
-    display: block;
-
+#userFormOut{
+    display: none;
+    text-align: center;
+    background-color: green;
+    border: solid black 5px;
+    border-radius: 20%;
+    padding: 5%;
 }
 
+#user_form{
+    display: block;
+}
 #user_form > input{
     width: 100%;
     height: 2rem;
@@ -76,16 +83,6 @@
     width: 30% !important;
        
 }
-#rese_form > label{
-    padding: 0.5em;
-  
-}
-#rese_form > input{
-    
-    margin: 0.3em;
-}
-
-
 
 .resa{
     display: block;
@@ -95,4 +92,8 @@
     display: none;
 }
 
-
+#bookTravel > input{
+    width: 100%;
+    height: 2rem;
+    font-size: 1.2em;
+}

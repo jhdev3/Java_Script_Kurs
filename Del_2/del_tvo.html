@@ -51,7 +51,6 @@
    <div class="gird_cont" > 
 
         <div class="grid-col-xxl">
-            <div id ="userDetails">
                 <form id="user_form" action="#">                <!--Användarens boknings upg :)-->
                     <label for = "Fname" > Förnamn: </label>
                     <input type="text" name = "firstName" id="Fname">  
@@ -61,31 +60,32 @@
                     <label for = "userEmail" > Email: </label>
                     <input type="text" name="userEmail" id="userEmail" > 
                     <label for = "usertnummer" > Telefonnummer: </label>
-                    <input type="text" name="teleNummer" id="usertnummer" placeholder="inga mellanslag eller andra tecken tillåts"> 
+                    <input type="text" name="teleNummer" id="usertnummer" placeholder="inga mellanslag eller andra tecken än siffror tillåts"> 
 
                     <label  for = "userGAddress" > Gatuadress: </label> 
                     <input type="text" name="userGAddress" id="userGAddress"> 
                     <label  for = "userPostnummer" > Postnummer: </label>
                     <input type="text" name="userPostnummer" id="userPostnummer" size="5">
                     <label  for = "userStad" > Stad: </label>
-                    <input type="text"  name="userStad" id="userStad"> 
+                    <input type="text"  name="city" id="userStad"> 
                     <input type="submit" id="userDetailsButton" value= "Submit the shit">
-                </form>
-
-                <div id="userFormOut"> </div>
-            </div>   
-                <div id="reseDetails">
-                     <form id="bookTravel" action="#">
+                </form>           
+                <form id="bookTravel" action="#">
+                     <p>Reser från Ankeborg xD   </p>
                         <!--Resan upg :)-->
-                        <label class="resa" for="resOrt">Val av ort: </label>
-                        <input type ="text" id ="resOrt"> 
-                        <label class="resa" for="avReseDatum">Avresedatum: </label>
-                        <input type ="date" id ="avReseDatum"> 
-                        <label class="resa" for="hemReseDatum">Hemresedatum: </label>
-                        <input type ="date" id ="hemReseDatum"> 
-                        <input class ="resa" type="submit" value="Boka resa">
-                    </form>
-                </div>
+                     <label class="resa" for="resOrt">Vart vill du åka?: </label>
+                    <input type ="text" name ="city" id ="resOrt"> 
+                    <label class="resa" for="avReseDatum">Avresedatum: </label>
+                     <input type ="date" name ="date" id ="avReseDatum"> 
+                    <label class="resa" for="hemReseDatum">Hemresedatum är inte required: </label>
+                    <input type ="date" name = "date" id ="hemReseDatum"> 
+                     <input class ="resa" type="submit" value="Boka resa">
+                </form>
+                <div id="userFormOut">  
+                    <p> Grattis du lyckades genomföra en bokning  :)</p>
+
+
+                </div>                              
         </div>
        
    </div>
