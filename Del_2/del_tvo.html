@@ -6,15 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript</title>
     <link rel="stylesheet" href="css/styles.css">
-    
+        <!--Importerar jquery, går lika bra med cdn men här är uncompressed, development jQuery 3.6.0 ifall jag vill kolla närmare på funktionerna :)
+        -->    
+    <script src ="java_script/jquery.js"></script>
+ 
 </head>
 <body>
         <!-- Gissa talet -->
-
+        <!-- Forms behöver inte name = egentligen nu när jag inte sänder forms:
+            viktigt att veta om man ska skicka forms är det de som har name input värden som skickas.
+        -->
     <div class="gissa_talet"> 
         <p>Upg6: Gissa på ett numer mellan 1-100, <br> Använder: jQuery</p>
         <div class="form"> 
-            <form id="guessID123" action="#">
+            <form id="guessID123" action ="#">
                 <label class="label" for="guess_number">Gissa Talet: </label> <br>
                 <input type="number" name="guess_number" id="guessNumber" required><br>
                 <input type="submit" value="Gissa talet">
@@ -28,15 +33,13 @@
         </div>
     </div>
 
-    <p>Upg6 Rövarspråket, DOM </p>
-
     <div class="gird_cont">
         <div class="grid-col-1"> 
+            <p>Upg6 Rövarspråket, DOM </p>
             <form id="rovarID123" action="#"> 
-                <label class="label" for="encode">Gissa Talet: </label> <br>
-                <input type="text" name="encode" id="encodeRovar" required><br>
+                <label class="label" for="encode">Översatt till rövarspråket: </label> <br>
+                <input type="text" name="encode" id="encodeRovar" pattern = "[a-öA-Ö\s]+" required><br>
                 <input type="submit" value="Översätt till Rövarspråket">
-                <input type="reset" value="Reset">
             </form>
         </div>
         <div class="grid-col-2">    
@@ -44,14 +47,55 @@
             <p id=rovarOut> </p>
         </div>
    </div>
+   <h1 style="text-align: center;">Upg 7: Intelligent reseformulär</h1> 
+   <div class="gird_cont" > 
 
-    <!--Importerar jquery, går lika bra med cdn men här är uncompressed, development jQuery 3.6.0 ifall jag vill kolla närmare på funktionerna :)
-       <button id="reset_guess"> Starta om </button> -->
-    <script src ="java_script/jquery.js"></script>
+        <div class="grid-col-xxl">
+                <form id="user_form" action="#">                <!--Användarens boknings upg :)-->
+                    <label for = "Fname" > Förnamn: </label>
+                    <input type="text" name = "firstName" id="Fname">  
+                    <label for = "familyName" > Efternamn: </label>
+                    <input type="text" name = "familyName" id="familyName">  
+
+                    <label for = "userEmail" > Email: </label>
+                    <input type="text" name="userEmail" id="userEmail" > 
+                    <label for = "usertnummer" > Telefonnummer: </label>
+                    <input type="text" name="teleNummer" id="usertnummer" placeholder="inga mellanslag eller andra tecken än siffror tillåts"> 
+
+                    <label  for = "userGAddress" > Gatuadress: </label> 
+                    <input type="text" name="userGAddress" id="userGAddress"> 
+                    <label  for = "userPostnummer" > Postnummer: </label>
+                    <input type="text" name="userPostnummer" id="userPostnummer" size="5">
+                    <label  for = "userStad" > Stad: </label>
+                    <input type="text"  name="city" id="userStad"> 
+                    <input type="submit" id="userDetailsButton" value= "Submit the shit">
+                </form>           
+                <form id="bookTravel" action="#">
+                     <p>Reser från Ankeborg xD   </p>
+                        <!--Resan upg :)-->
+                     <label class="resa" for="resOrt">Vart vill du åka?: </label>
+                    <input type ="text" name ="city" id ="resOrt"> 
+                    <label class="resa" for="avReseDatum">Avresedatum: </label>
+                     <input type ="date" name ="date" id ="avReseDatum"> 
+                    <label class="resa" for="hemReseDatum">Hemresedatum är inte required: </label>
+                    <input type ="date" name = "date" id ="hemReseDatum"> 
+                     <input class ="resa" type="submit" value="Boka resa">
+                </form>
+                <div id="userFormOut">  
+                    <p> Grattis du lyckades genomföra en bokning  :)</p>
+
+
+                </div>                              
+        </div>
+       
+   </div>
+
+
+
+
 
     <script src ="java_script/guess.js"></script> 
-
     <script src ="java_script/rovarupg6.js"></script> 
-
+    <script src ="java_script/intelligentform.js" ></script>
 </body>
 </html>
