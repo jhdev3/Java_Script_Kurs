@@ -4,6 +4,7 @@
 
 
 */
+console.log("Upgift 5 hoppas det räcker :)");
 class Person {
     constructor(namn, bdate) {
         let divide = bdate.split('-');
@@ -123,3 +124,6 @@ let gustav = new Student ("gustav", "1988-02-03", "TUC");
 //Nu blir gustav både en person och en Student Coolt han levde under radarn innan han blev en student ;) 
 console.log(gustav instanceof Student);  // true - h är en Student
 console.log(gustav instanceof Person);   // true - h är en Student och följaktligen en Person
+
+
+console.log("Upgift 5 Slut klasser i Javascript är kul och kan skrivas på så många olika sätt men allt i javascript känns som objekt ;) ");
