@@ -97,3 +97,62 @@
     height: 2rem;
     font-size: 1.2em;
 }
+
+/* Bara bakgrund jag har som referens borde göra den till div cont */
+#jq-cont{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 20vh);
+    justify-items: start;
+    background-color: green;
+
+
+
+}
+
+#jq-col-1{
+
+    grid-column: 1/4;
+    grid-row: 1/2;
+    justify-self: stretch;
+    background-color: blue;
+
+ 
+}
+
+#jq-col-2{
+
+    grid-column: 1/4;
+    grid-row: 2/5;
+    background-color: tan;
+    justify-self: stretch;
+}
+
+#jq-ani-1{
+    float: left;
+    position: relative;
+    width: 30%;
+    height: 20%;
+    top: 70%;
+    background-color: red;
+
+
+}
+
+#jq-ani-2{
+    position: relative;
+    width: 30%;
+    height: 20%;
+    top: 70%;
+    left: 70%;
+    background-color: black;
+    
+
+
+}
+#jq-ani-3{
+    grid-column: 1/4;
+    grid-row: 2/3;
+    justify-self: center;
+
+}
