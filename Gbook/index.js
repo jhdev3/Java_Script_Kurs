@@ -1,19 +1,24 @@
 //Server Script
+/*
+const http = require("http");
+const server = http.createServer(app);
 
+*/
 //Installed Pakackge express
-//Installed filhantering fs något
-
+//Installed ejs för templete engine
 const express = require("express");
 const app = express();
 const port = 2000;
-const http = require("http");
-const server = http.createServer(app);
+
 let routes = require("./routes");
 app.use(express.static(__dirname + "/public"));
 
+//View engine Defaoult letar views i view folder xD Great 
+app.set("view engine", "ejs");
+
 app.use("/", routes);
 
-server.listen(port); //port 2000
+let server = app.listen(port); //port 2000
 console.log("Live på localholst:2000");
 
 //console.log(process.pid);
