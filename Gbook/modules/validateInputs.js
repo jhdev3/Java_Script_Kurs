@@ -1,7 +1,7 @@
 const patterns = {
   name: new RegExp(/^(\p{L}|\s){2,}$/iu), //Förnamn och efternamn tillåter dubbelnamn samt alla olika bokstäver för alla språk:)
   email: new RegExp(
-    /^([^\.][a-z0-9!#$%&'*\+\-\/=?^_`{|}~.]{1,63})[^\.]@{1}([a-z]{1})([a-z0-9\.-]*)([^-])\.([a-z]){2,8}$/i
+    /^([^\.][a-z0-9!#$%&'*\+\-\/=?^_`{|}~.]{0,63})[^\.]@{1}([a-z]{1})([a-z0-9\.-]*)([^-])\.([a-z]){2,8}$/i
   ),
 };
 
