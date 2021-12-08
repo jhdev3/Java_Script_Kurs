@@ -15,7 +15,7 @@ class ReadFile {
     this.getJsonObj = function () {
       //Kolla EmptyDocument :)
       if (data == "") {
-        console.log("emptyDocument");
+        console.log("emptyDB");
         return "";
       } else {
         let jsonobj = data.substring(1); //Tar bort första ,
