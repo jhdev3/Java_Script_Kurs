@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="grid_cont">
+      <div class="col-1">
+        <form id="post_recension">
+          <h2>Hur skulle du betygsätta besöket?</h2>
+
+          <div>
+            <ul id="ratings">
+              <li>
+                <input type="radio" value="1" name="rating" id="rating1" />
+                <label for="rating1">1</label>
+              </li>
+              <li>
+                <input type="radio" value="2" name="rating" id="rating2" />
+                <label for="rating2">2</label>
+              </li>
+              <li>
+                <input type="radio" value="3" name="rating" id="rating3" />
+                <label for="rating2">3</label>
+              </li>
+              <li>
+                <input type="radio" value="4" name="rating" id="rating4" />
+                <label for="rating2">4</label>
+              </li>
+              <li>
+                <input type="radio" value="5" name="rating" id="rating5" />
+                <label for="rating2">5</label>
+              </li>
+            </ul>
+            <p id="ratingError" class="errorMsg"></p>
+          </div>
+          <p>Namn:</p>
+          <input type="text" id="name" name="name" />
+          <p id="nameError" class="errorMsg"></p>
+
+          <p>Email:</p>
+          <input type="email" id="email" name="email" />
+          <p id="emailError" class="errorMsg"></p>
+          <p>Egena förslag på förbättringar:</p>
+          <textarea id="resReview" name="review" rows="4" cols="50"></textarea>
+          <div style="text-align: end">
+            <button class="btn-submit">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      

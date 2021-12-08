@@ -1,0 +1,1 @@
+,{"rating":"5","name":"","email":"","review":"Det här är en trevlig liten gästbok. <Den tillåter mycket :)> Namn och email är inte nödvändigt --> GDPR ;). \r\n\r\nMen om ni väljer att fylla i dem så kommer du att få ett felmeddelande om du gör något fel :) "},{"rating":"3","name":"Jacob Hedén","email":"enebyjacke@hotmail.com","review":"Skapa data utan att ladda om sidan :)"}
