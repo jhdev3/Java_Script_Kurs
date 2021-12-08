@@ -30,3 +30,7 @@ socket.on("chat message", function (chat_msg) {
 socket.on("connection msg", (connect_msg) => {
   createChatMsg(connect_msg, "connected");
 });
+
+socket.on("disconnected msg", (connect_msg) => {
+  createChatMsg(connect_msg, "disconnected");
+});

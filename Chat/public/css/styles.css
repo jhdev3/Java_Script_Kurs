@@ -7,6 +7,9 @@
 
   --primary-color-reciveMsg: #fff;
   --primary-bg-reciveMsg: #014b01;
+
+  --primary-color-disconnected: #fff;
+  --primary-bg-disconnected: rgb(78, 1, 1);
 }
 body {
   margin: 0;
@@ -61,7 +64,7 @@ body {
   /*varanan får en annan färg jippe */
   background: #efefef;
 }
-
+/*Messeges styles */
 .connected {
   background-color: var(--primary-bg-connected);
   color: var(--primary-color-connected);
@@ -76,4 +79,9 @@ body {
 .reciveMsg {
   background-color: var(--primary-bg-reciveMsg);
   color: var(--primary-color-reciveMsg);
+}
+.disconnected {
+  background-color: var(--primary-bg-disconnected);
+  color: var(--primary-color-disconnected);
+  font-size: small;
 }
