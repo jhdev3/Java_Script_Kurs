@@ -1,3 +1,13 @@
+:root {
+  --primary-color-connected: #fff;
+  --primary-bg-connected: #333;
+
+  --primary-color-myMsg: #fff;
+  --primary-bg-myMsg: #0761d6;
+
+  --primary-color-reciveMsg: #fff;
+  --primary-bg-reciveMsg: #014b01;
+}
 body {
   margin: 0;
   padding-bottom: 3rem;
@@ -45,6 +55,25 @@ body {
 #messages > li {
   padding: 0.5rem 1rem;
 }
+/*Kanske tar bort :) */
+
 #messages > li:nth-child(odd) {
+  /*varanan får en annan färg jippe */
   background: #efefef;
+}
+
+.connected {
+  background-color: var(--primary-bg-connected);
+  color: var(--primary-color-connected);
+  font-size: small;
+}
+
+.myMsg {
+  background-color: var(--primary-bg-myMsg);
+  color: var(--primary-color-myMsg);
+}
+
+.reciveMsg {
+  background-color: var(--primary-bg-reciveMsg);
+  color: var(--primary-color-reciveMsg);
 }

@@ -18,10 +18,15 @@ io.emit("some event", {
 }); // This will emit the event to all connected sockets
 
 io.on("connection", (socket) => {
-  console.log("a user connected");
+  console.log("a user connected with socket id:  " + socket.id);
+  socket.broadcast.emit(
+    "connection msg",
+    "User with id: " + socket.id + " has connected to the chat"
+  );
+
   socket.on("chat message", (msg) => {
     console.log("message: " + msg);
-    io.emit("chat message", msg);
+    socket.broadcast.emit("chat message", msg); // Sickar till alla utom den som skrev :)
   });
   socket.on("disconnect", () => {
     console.log("user disconnected");

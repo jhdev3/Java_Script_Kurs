@@ -8,13 +8,25 @@ form.addEventListener("submit", function (e) {
   e.preventDefault();
   if (input.value) {
     socket.emit("chat message", input.value);
+    createChatMsg(input.value, "myMsg");
     input.value = "";
   }
 });
 
-socket.on("chat message", function (msg) {
+function createChatMsg(msg, type) {
   let item = document.createElement("li");
-  item.textContent = msg;
+  let text = document.createElement("p");
+  text.setAttribute("class", type);
+  text.textContent = msg;
+  item.appendChild(text);
   messages.appendChild(item);
   window.scrollTo(0, document.body.scrollHeight);
+}
+
+socket.on("chat message", function (chat_msg) {
+  createChatMsg(chat_msg, "reciveMsg");
+});
+
+socket.on("connection msg", (connect_msg) => {
+  createChatMsg(connect_msg, "connected");
 });
