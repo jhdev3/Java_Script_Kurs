@@ -9,6 +9,7 @@ const io = new Server(server);
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
+  console.log(req.query);
   res.sendFile(__dirname + "/chat.html");
 });
 
@@ -17,13 +18,26 @@ io.emit("some event", {
   otherProperty: "other value",
 }); // This will emit the event to all connected sockets
 
+//on connection middleware function :)
+
+io.use((socket, next) => {
+  const username = socket.handshake.auth.username;
+  console.log(username);
+  if (!username) {
+    console.log("error");
+    return next(new Error("noUsername"));
+  }
+  socket.username = username;
+  next();
+});
+
 io.on("connection", (socket) => {
   let handshake = socket.handshake; //Testa senare
 
-  console.log(handshake);
+  console.log(socket.username);
   socket.broadcast.emit(
     "connection msg",
-    "User with id: " + socket.id + " has connected to the chat"
+    "User: " + socket.username + " has connected to the chat"
   );
 
   socket.on("chat message", (msg) => {

@@ -1,4 +1,6 @@
 :root {
+  --primary-bg-color-100: #fff;
+
   --primary-color-connected: #fff;
   --primary-bg-connected: #333;
 
@@ -11,13 +13,37 @@
   --primary-color-disconnected: #fff;
   --primary-bg-disconnected: rgb(78, 1, 1);
 }
+/* Gillar den stilen */
+
 body {
   margin: 0;
   padding-bottom: 3rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
 }
+* {
+  box-sizing: border-box;
+}
+/* Login form */
+#loginCont {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-bg-color-100);
+}
+.loginForm {
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+#login {
+  display: flex;
+  flex-direction: column;
+}
 
+/* ---end login form --- */
 #form {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
