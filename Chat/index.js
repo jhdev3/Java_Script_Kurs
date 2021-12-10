@@ -22,7 +22,7 @@ io.emit("some event", {
 
 io.use((socket, next) => {
   const username = socket.handshake.auth.username;
-  console.log(username);
+  //console.log(username);
   if (!username) {
     console.log("error");
     return next(new Error("noUsername"));
@@ -32,9 +32,10 @@ io.use((socket, next) => {
 });
 
 io.on("connection", (socket) => {
-  let handshake = socket.handshake; //Testa senare
+  //let handshake = socket.handshake; //Testa senare
 
-  console.log(socket.username);
+  console.log("User: " + socket.username + " connected to the chat");
+  //Castar till alla andra när någon connectar:)
   socket.broadcast.emit(
     "connection msg",
     "User: " + socket.username + " has connected to the chat"

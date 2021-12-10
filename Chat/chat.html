@@ -7,14 +7,27 @@
   <body>
     <div id="loginCont">
       <form action="" id="login">
-        <input type="text" name="" id="userName" pattern="[A-Za-z0-9]+" />
+        <label for="userName">User name:</label>
+        <input
+          type="text"
+          name="userName"
+          id="userName"
+          pattern="[A-Za-z0-9]+"
+        />
         <input type="submit" value="Submit" />
       </form>
     </div>
 
     <section id="chatWindow">
       <ul id="messages"></ul>
+      <!--Ligger längst när på sidan position fixed inne i forum kanske gör en container för formen istället-->
       <form id="form" action="">
+        <div class="event_cont"> 
+          <ul id="events"></> 
+            <li id="connected"></li> 
+            <li id="user_writes"></li>
+          </ul>
+        </div>
         <input id="input" autocomplete="off" /><button>Send</button>
       </form>
     </section>
