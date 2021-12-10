@@ -21,15 +21,18 @@
     <section id="chatWindow">
       <ul id="messages"></ul>
       <!--Ligger längst när på sidan position fixed inne i forum kanske gör en container för formen istället-->
-      <form id="form" action="">
-        <div class="event_cont"> 
-          <ul id="events"></> 
-            <li id="connected"></li> 
+     
+      <div class="fixedCont">
+        <div class="event_cont">
+          <ul id="events"></>
+            <li id="connected"></li>
             <li id="user_writes"></li>
           </ul>
         </div>
-        <input id="input" autocomplete="off" /><button>Send</button>
-      </form>
+        <form id="form" action="">
+          <input id="input" autocomplete="off" /><button>Send</button>
+        </form>
+      </div>
     </section>
 
     <script src="/socket.io/socket.io.js"></script>

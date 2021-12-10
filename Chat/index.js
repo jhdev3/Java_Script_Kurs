@@ -45,11 +45,16 @@ io.on("connection", (socket) => {
     // console.log("message: " + msg);
     socket.broadcast.emit("chat message", msg); // Sickar till alla utom den som skrev :)
   });
+
+  socket.on("user typing", () => {
+    socket.broadcast.emit("user typing", socket.username + " is typing");
+  });
+
   socket.on("disconnect", () => {
-    console.log("user disconnected");
+    console.log("user disconnected with socked id: " + socket.id);
     socket.broadcast.emit(
       "disconnected msg",
-      "User with id: " + socket.id + " has disconnected"
+      "User: " + socket.username + " has disconnected"
     );
   });
 });

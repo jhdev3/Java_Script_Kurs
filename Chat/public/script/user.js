@@ -65,6 +65,15 @@ form.addEventListener("submit", function (e) {
   }
 });
 
+/* User is typing */
+input.addEventListener("keydown", (event) => {
+  //console.log(input.value.length);
+  //Någon limit korta snabba svar är väll inget att broadcasta;)
+  if (event.target.value.length > 4) {
+    socket.emit("user typing");
+  }
+});
+
 function createChatMsg(msg, type) {
   let item = document.createElement("li");
   let text = document.createElement("p");
@@ -85,4 +94,8 @@ socket.on("connection msg", (connect_msg) => {
 
 socket.on("disconnected msg", (connect_msg) => {
   createChatMsg(connect_msg, "disconnected");
+});
+
+socket.on("user typing", (msg) => {
+  document.querySelector("#user_writes").textContent = msg;
 });
