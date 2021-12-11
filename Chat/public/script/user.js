@@ -96,6 +96,15 @@ socket.on("disconnected msg", (connect_msg) => {
   createChatMsg(connect_msg, "disconnected");
 });
 
+let typing = false; //För att det inte ska blinka osv om man skriver mycket eller flera användare skriver samtidgit
+//Den som kommer först syns i 3 sek blir ingen kö utan fortsätter man eller någon annan skriver så vissas den
 socket.on("user typing", (msg) => {
-  document.querySelector("#user_writes").textContent = msg;
+  if (!typing) {
+    document.querySelector("#user_writes").textContent = msg;
+    typing = true;
+    setTimeout(() => {
+      document.querySelector("#user_writes").textContent = "";
+      typing = false;
+    }, 3000);
+  }
 });

@@ -51,7 +51,7 @@ body {
   left: 0;
   right: 0;
 }
-
+/* Till senare keyfram linear gradient change colors on typing*/
 #events {
   display: flex;
   flex-direction: row;
