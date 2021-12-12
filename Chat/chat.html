@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="loginCont">
+      <form action="" id="login">
+        <label for="userName">User name:</label>
+        <input
+          type="text"
+          name="userName"
+          id="userName"
+          pattern="[A-Za-z0-9]+"
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <section id="chatWindow">
+      <ul id="messages"></ul>
+      <!--Ligger längst när på sidan position fixed inne i forum kanske gör en container för formen istället-->
+     
+      <div class="fixedCont">
+        <div class="event_cont">
+          <ul id="events"></>          
+            <li id="user_writes"></li>
+            <li id="select_user"><select name="privateMsg" id="privateMsg"> 
+              <option value="allChat">Send Private Message</option>
+    <!-- blir lite tydligare för användaren vill ha private messge som egen flikar-->
+              <option value="allChat">Send to All </option>
+
+            </select></li>
+          </ul>
+        </div>
+        <form id="form" action="">
+          <input id="input" autocomplete="off" /><button>Send</button>
+        </form>
+      </div>
+    </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script/user.js"></script>
+  </body>
+</html>

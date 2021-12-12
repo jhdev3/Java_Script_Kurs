@@ -1,0 +1,215 @@
+:root {
+  --primary-bg-color-100: #fff;
+
+  --primary-color-connected: #333;
+  --primary-bg-connected: #fff;
+
+  --primary-color-disconnected: #700000;
+  --primary-bg-disconnected: #fff;
+
+  --primary-color-myMsg: #fff;
+  --primary-bg-myMsg: #0761d6;
+
+  --primary-color-reciveMsg: #fff;
+  --primary-bg-reciveMsg: #014b01;
+
+  --primary-color-myPrivateMsg: #000000;
+  --primary-bg-myPrivateMsg: #e604c7;
+
+  --primary-color-recivePrivateMsg: #000000;
+  --primary-bg-recivePrivateMsg: #d2e004;
+  /* Rainbow :)*/
+  --user-write-gradient: linear-gradient(
+    90deg,
+    #9400d3,
+    #4b0082,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff7f00,
+    #ff0000
+  );
+  --user-uw-fontsize: 20px;
+  --chat-text-size: 18px;
+}
+/* Gillar den stilen */
+
+body {
+  margin: 0;
+  padding-bottom: 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--primary-bg-color-100);
+}
+* {
+  box-sizing: border-box;
+}
+/* Login form */
+#loginCont {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-bg-color-100);
+}
+.loginForm {
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+#login {
+  display: flex;
+  flex-direction: column;
+}
+/* ---end login form --- */
+
+/* Botom Cont*/
+.fixedCont {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/* Till senare keyfram linear gradient change colors on typing*/
+#user_writes {
+  font-weight: 900;
+  font-size: var(--user-uw-fontsize);
+  background-image: var(--user-write-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 300%;
+  color: transparent;
+  animation: uw-animation 5s infinite alternate-reverse;
+}
+
+@keyframes uw-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+#events {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+#events > li {
+  list-style: none;
+}
+#select_user {
+  margin-left: auto;
+  margin-right: 2em;
+}
+#form {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+#input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+#input:focus {
+  outline: none;
+}
+#form > button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+}
+
+#messages {
+  list-style-type: none;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0;
+}
+#messages > li {
+  display: grid;
+  grid-template-columns: 1em 1fr 1em;
+  padding: 0.5rem 1rem;
+}
+
+.split {
+  display: flex;
+  justify-content: flex-center;
+  gap: 1rem;
+  font-weight: 550;
+  font-style: italic;
+}
+/* trevligt när de är splitar i 2 columner:)*/
+
+.myMsg,
+.reciveMsg,
+.privateMsg,
+.privateMsgRec {
+  grid-column: 2/3;
+  border-radius: 15px;
+  padding: 0.6rem;
+}
+
+p {
+  margin: 0;
+  font-size: var(--chat-text-size);
+}
+
+.myMsg,
+.privateMsg {
+  justify-self: end;
+}
+
+.reciveMsg,
+.privateMsgRec {
+  justify-self: start;
+}
+.connected,
+.disconnected {
+  grid-column: 2/3;
+  justify-self: center;
+  font-weight: 900;
+}
+
+/*Messeges styles */
+.connected {
+  background-color: var(--primary-bg-connected);
+  color: var(--primary-color-connected);
+  font-size: small;
+}
+
+.myMsg {
+  background-color: var(--primary-bg-myMsg);
+  color: var(--primary-color-myMsg);
+}
+
+.reciveMsg {
+  background-color: var(--primary-bg-reciveMsg);
+  color: var(--primary-color-reciveMsg);
+}
+.privateMsg {
+  background-color: var(--primary-bg-myPrivateMsg);
+  color: var(--primary-color-myPrivateMsg);
+}
+
+.privateMsgRec {
+  background-color: var(--primary-bg-recivePrivateMsg);
+  color: var(--primary-color-recivePrivateMsg);
+}
+.disconnected {
+  background-color: var(--primary-bg-disconnected);
+  color: var(--primary-color-disconnected);
+  font-size: small;
+}
