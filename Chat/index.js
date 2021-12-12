@@ -83,6 +83,18 @@ io.on("connection", (socket) => {
   socket.on("user typing", () => {
     socket.broadcast.emit("user typing", socket.username + " is typing");
   });
+  //Gör en sista koll på serversidan
+  socket.on("private msg", ({ sendTo, msg }) => {
+    if (io.of("/").sockets.get(sendTo)) {
+      console.log(sendTo + " : " + msg);
+      socket.to(sendTo).emit("private msg", {
+        msg: msg,
+        from: socket.username,
+      });
+    } else {
+      socket.emit("private error", "User dont exist");
+    }
+  });
 
   socket.on("disconnect", () => {
     console.log("user disconnected with socked id: " + socket.id);

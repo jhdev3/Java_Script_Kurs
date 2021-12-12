@@ -35,12 +35,17 @@ socket.on("connect_error", (error) => {
     connect = false;
   }
 });
+//private error msg
+socket.on("private error", (err) => {
+  createChatMsg(err, "erroMsg");
+});
 
 socket.on("connect", () => {
   /* Unit test 
   console.log("Connected = true");
   console.log(socket.id + " " + socket.username);
 */
+  //console.log(socket.id);
   document.getElementById("chatWindow").style.visibility = "visible";
   document.getElementById("loginCont").style.visibility = "hidden";
 });
@@ -48,9 +53,15 @@ socket.on("connect", () => {
 /* Hämtar och skriver ut Users i select box*/
 socket.on("userArray", (getUsers) => {
   users = getUsers;
-  console.log(users);
+  //console.log(users);
   for (u of users) {
-    createOption(u);
+    console.log(u);
+    //Så att jag inte ser mig själv och sickar til mig själv etc
+    //gör inte så mycket att mit eget id finns med i arrayen
+    //Det var trevligt när man felsökte etc det viktiga är att inte sicka till sig själv och se sig själv
+    if (u.userID !== socket.id) {
+      createOption(u);
+    }
   }
 });
 
@@ -73,15 +84,29 @@ loginForm.addEventListener("submit", (event) => {
 
   const username = loginInput.value;
   socket.auth = { username }; //läger det som ett object i socket.auth och accesar det senare på server sidan enkelt
-  console.log(socket.auth);
+  //console.log(socket.auth);
   socket.connect();
 });
 /*---Chat--- */
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  if (input.value) {
+  let privateMsg = privateMsgSelect.options[privateMsgSelect.selectedIndex];
+  // console.log(privateMsg);
+  // console.log(privateMsg.value);
+
+  //Kollar tom sträng
+  if (input.value && privateMsg.value === "allChat") {
     socket.emit("chat message", input.value);
     createChatMsg(input.value, "myMsg");
+    input.value = "";
+  }
+  //kollar private msg
+  if (input.value && privateMsg.value !== "allChat") {
+    socket.emit("private msg", {
+      sendTo: privateMsg.value,
+      msg: input.value,
+    });
+    createChatMsg(input.value, "privateMsg");
     input.value = "";
   }
 });
@@ -109,8 +134,15 @@ socket.on("chat message", function (chat_msg) {
   createChatMsg(chat_msg, "reciveMsg");
 });
 
+socket.on("private msg", (objMsg) => {
+  console.log(objMsg);
+  console.log(objMsg.from + " " + objMsg.msg);
+  createChatMsg(objMsg.from + " :" + objMsg.msg, "privateMsg");
+});
+
 socket.on("connection msg", (user) => {
   users.push(user);
+  console.log(users);
   createOption(user);
   createChatMsg(
     "User: " + user.username + " has connect to the chat",
@@ -121,11 +153,51 @@ socket.on("connection msg", (user) => {
 socket.on("disconnected msg", (user) => {
   /*Delet user :) */
 
+  deleteUser(user.userID);
+  deletOptionUser(user.userID);
   createChatMsg(
     "User:" + user.username + " has disconnected from the chat",
     "disconnected"
   );
 });
+//Funkar :);)
+function deletOptionUser(id) {
+  /*
+  Allternativ lösning ta bort option som matchar value;)
+  let allOptions = document.querySelectorAll("option");
+  console.log(allOptions);
+  eller något sådant men funkar inte riktigt
+
+  Det där kan fungera om jag lägger till ett id på option när jag skapar
+  option för varje user ;)
+   let option = document.querySelector("#" + user.userID);
+  console.log(option);
+  option.remove();
+  
+  */
+  let index = 0;
+  //o är option sen index är det som tas bort;)
+  //Går säkert att
+  for (o of privateMsgSelect) {
+    //console.log(pplSelect[i]);
+    //  console.log(o.value);
+    if (o.value === id) {
+      privateMsgSelect.remove(index);
+    }
+    ++index;
+    // privateMsgSelect.remove(i);
+  }
+}
+
+function deleteUser(id) {
+  // console.log(id);
+  users = users.filter((u) => {
+    //  console.log(u.userID);
+    return u.userID !== id;
+  });
+
+  // console.log(users);
+}
 
 let typing = false; //För att det inte ska blinka osv om man skriver mycket eller flera användare skriver samtidgit
 //Den som kommer först syns i 3 sek blir ingen kö utan fortsätter man eller någon annan skriver så vissas den
