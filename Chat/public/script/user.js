@@ -9,6 +9,10 @@ let input = document.getElementById("input");
 let loginForm = document.querySelector("#login");
 let loginInput = document.getElementById("userName");
 
+const privateMsgSelect = document.querySelector("#privateMsg");
+
+let users = [];
+
 /* 
 //Skriver ut alla events som servern sickar se bra för felsökning :) 
 socket.onAny((event, ...args) => {
@@ -40,6 +44,23 @@ socket.on("connect", () => {
   document.getElementById("chatWindow").style.visibility = "visible";
   document.getElementById("loginCont").style.visibility = "hidden";
 });
+
+/* Hämtar och skriver ut Users i select box*/
+socket.on("userArray", (getUsers) => {
+  users = getUsers;
+  console.log(users);
+  for (u of users) {
+    createOption(u);
+  }
+});
+
+function createOption(data) {
+  let option = document.createElement("OPTION");
+  option.value = data.userID;
+  option.text = data.username;
+  privateMsgSelect.appendChild(option);
+}
+
 //Ändrar validity etc på fältet xD Så att om man gör fel kan göra rätt utan att ladda om sidan;)
 loginInput.addEventListener("focus", function (event) {
   loginInput.validity.valid = true;
@@ -51,7 +72,7 @@ loginForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const username = loginInput.value;
-  socket.auth = { username };
+  socket.auth = { username }; //läger det som ett object i socket.auth och accesar det senare på server sidan enkelt
   console.log(socket.auth);
   socket.connect();
 });
@@ -88,12 +109,22 @@ socket.on("chat message", function (chat_msg) {
   createChatMsg(chat_msg, "reciveMsg");
 });
 
-socket.on("connection msg", (connect_msg) => {
-  createChatMsg(connect_msg, "connected");
+socket.on("connection msg", (user) => {
+  users.push(user);
+  createOption(user);
+  createChatMsg(
+    "User: " + user.username + " has connect to the chat",
+    "connected"
+  );
 });
 
-socket.on("disconnected msg", (connect_msg) => {
-  createChatMsg(connect_msg, "disconnected");
+socket.on("disconnected msg", (user) => {
+  /*Delet user :) */
+
+  createChatMsg(
+    "User:" + user.username + " has disconnected from the chat",
+    "disconnected"
+  );
 });
 
 let typing = false; //För att det inte ska blinka osv om man skriver mycket eller flera användare skriver samtidgit

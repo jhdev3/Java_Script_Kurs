@@ -59,9 +59,11 @@ body {
 }
 #events > li {
   list-style: none;
-  margin-right: auto;
 }
-
+#connected_users {
+  margin-left: auto;
+  margin-right: 2em;
+}
 #form {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
