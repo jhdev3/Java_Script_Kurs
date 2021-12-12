@@ -1,8 +1,11 @@
 :root {
   --primary-bg-color-100: #fff;
 
-  --primary-color-connected: #fff;
-  --primary-bg-connected: #333;
+  --primary-color-connected: #333;
+  --primary-bg-connected: #fff;
+
+  --primary-color-disconnected: #700000;
+  --primary-bg-disconnected: #fff;
 
   --primary-color-myMsg: #fff;
   --primary-bg-myMsg: #0761d6;
@@ -10,8 +13,24 @@
   --primary-color-reciveMsg: #fff;
   --primary-bg-reciveMsg: #014b01;
 
-  --primary-color-disconnected: #fff;
-  --primary-bg-disconnected: rgb(78, 1, 1);
+  --primary-color-myPrivateMsg: #000000;
+  --primary-bg-myPrivateMsg: #e604c7;
+
+  --primary-color-recivePrivateMsg: #000000;
+  --primary-bg-recivePrivateMsg: #d2e004;
+  /* Rainbow :)*/
+  --user-write-gradient: linear-gradient(
+    90deg,
+    #9400d3,
+    #4b0082,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff7f00,
+    #ff0000
+  );
+  --user-uw-fontsize: 20px;
+  --chat-text-size: 18px;
 }
 /* Gillar den stilen */
 
@@ -20,6 +39,7 @@ body {
   padding-bottom: 3rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
+  background-color: var(--primary-bg-color-100);
 }
 * {
   box-sizing: border-box;
@@ -52,6 +72,26 @@ body {
   right: 0;
 }
 /* Till senare keyfram linear gradient change colors on typing*/
+#user_writes {
+  font-weight: 900;
+  font-size: var(--user-uw-fontsize);
+  background-image: var(--user-write-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 300%;
+  color: transparent;
+  animation: uw-animation 5s infinite alternate-reverse;
+}
+
+@keyframes uw-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
 #events {
   display: flex;
   flex-direction: row;
@@ -60,7 +100,7 @@ body {
 #events > li {
   list-style: none;
 }
-#connected_users {
+#select_user {
   margin-left: auto;
   margin-right: 2em;
 }
@@ -94,18 +134,55 @@ body {
 
 #messages {
   list-style-type: none;
-  margin: 0;
+  width: 100%;
+  margin-top: 1rem;
   padding: 0;
 }
 #messages > li {
+  display: grid;
+  grid-template-columns: 1em 1fr 1em;
   padding: 0.5rem 1rem;
 }
-/*Kanske tar bort :) */
 
-#messages > li:nth-child(odd) {
-  /*varanan får en annan färg jippe */
-  background: #efefef;
+.split {
+  display: flex;
+  justify-content: flex-center;
+  gap: 1rem;
+  font-weight: 550;
+  font-style: italic;
 }
+/* trevligt när de är splitar i 2 columner:)*/
+
+.myMsg,
+.reciveMsg,
+.privateMsg,
+.privateMsgRec {
+  grid-column: 2/3;
+  border-radius: 15px;
+  padding: 0.6rem;
+}
+
+p {
+  margin: 0;
+  font-size: var(--chat-text-size);
+}
+
+.myMsg,
+.privateMsg {
+  justify-self: end;
+}
+
+.reciveMsg,
+.privateMsgRec {
+  justify-self: start;
+}
+.connected,
+.disconnected {
+  grid-column: 2/3;
+  justify-self: center;
+  font-weight: 900;
+}
+
 /*Messeges styles */
 .connected {
   background-color: var(--primary-bg-connected);
@@ -121,6 +198,15 @@ body {
 .reciveMsg {
   background-color: var(--primary-bg-reciveMsg);
   color: var(--primary-color-reciveMsg);
+}
+.privateMsg {
+  background-color: var(--primary-bg-myPrivateMsg);
+  color: var(--primary-color-myPrivateMsg);
+}
+
+.privateMsgRec {
+  background-color: var(--primary-bg-recivePrivateMsg);
+  color: var(--primary-color-recivePrivateMsg);
 }
 .disconnected {
   background-color: var(--primary-bg-disconnected);

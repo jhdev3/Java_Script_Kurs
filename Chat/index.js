@@ -77,7 +77,10 @@ io.on("connection", (socket) => {
 
   socket.on("chat message", (msg) => {
     // console.log("message: " + msg);
-    socket.broadcast.emit("chat message", msg); // Sickar till alla utom den som skrev :)
+    socket.broadcast.emit("chat message", {
+      username: socket.username,
+      text: msg,
+    }); // Sickar till alla utom den som skrev :)
   });
 
   socket.on("user typing", () => {

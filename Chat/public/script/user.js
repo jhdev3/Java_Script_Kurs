@@ -55,7 +55,7 @@ socket.on("userArray", (getUsers) => {
   users = getUsers;
   //console.log(users);
   for (u of users) {
-    console.log(u);
+    // console.log(u);
     //Så att jag inte ser mig själv och sickar til mig själv etc
     //gör inte så mycket att mit eget id finns med i arrayen
     //Det var trevligt när man felsökte etc det viktiga är att inte sicka till sig själv och se sig själv
@@ -97,7 +97,7 @@ form.addEventListener("submit", function (e) {
   //Kollar tom sträng
   if (input.value && privateMsg.value === "allChat") {
     socket.emit("chat message", input.value);
-    createChatMsg(input.value, "myMsg");
+    createChatMsg({ username: "", text: input.value }, "myMsg");
     input.value = "";
   }
   //kollar private msg
@@ -106,7 +106,7 @@ form.addEventListener("submit", function (e) {
       sendTo: privateMsg.value,
       msg: input.value,
     });
-    createChatMsg(input.value, "privateMsg");
+    createChatMsg({ username: "", text: input.value }, "privateMsg");
     input.value = "";
   }
 });
@@ -115,16 +115,54 @@ form.addEventListener("submit", function (e) {
 input.addEventListener("keydown", (event) => {
   //console.log(input.value.length);
   //Någon limit korta snabba svar är väll inget att broadcasta;)
-  if (event.target.value.length > 4) {
-    socket.emit("user typing");
+  let privateMsg = privateMsgSelect.options[privateMsgSelect.selectedIndex];
+
+  /* Kan lägga till en user writing to men det blir mest copy paste ;) */
+  if (privateMsg.value === "allChat") {
+    if (event.target.value.length > 4) {
+      socket.emit("user typing");
+    }
   }
 });
-
-function createChatMsg(msg, type) {
+//Template outPutChat
+function createChatMsg(userMsg, type) {
   let item = document.createElement("li");
+  let divCont = document.createElement("div");
+  divCont.setAttribute("class", type);
+
+  let divSplit = document.createElement("div");
+  divSplit.setAttribute("class", "split");
+
+  let name = document.createElement("div");
+  name.textContent = userMsg.username;
+  divSplit.appendChild(name);
+  let timeDiv = document.createElement("div");
+  let time = new Date();
+  timeDiv.textContent = time.toTimeString().substring(0, 5);
+  divSplit.appendChild(timeDiv);
+  divCont.appendChild(divSplit);
+
+  // time.toTimeString();
+  let text = document.createElement("p");
+  text.textContent = userMsg.text;
+  let divText = document.createElement("div");
+  divText.setAttribute("class", "textDiv");
+  divText.appendChild(text);
+  divCont.appendChild(divText);
+
+  item.appendChild(divCont);
+  messages.appendChild(item);
+  window.scrollTo(0, document.body.scrollHeight);
+}
+//template disconnect connect
+//Vore nice att lägga till en icon här
+function createConDiscon(userEvent, type) {
   let text = document.createElement("p");
   text.setAttribute("class", type);
-  text.textContent = msg;
+  let time = new Date();
+
+  text.textContent = userEvent + "  " + time.toTimeString().substring(0, 5);
+  let item = document.createElement("li");
   item.appendChild(text);
   messages.appendChild(item);
   window.scrollTo(0, document.body.scrollHeight);
@@ -135,19 +173,16 @@ socket.on("chat message", function (chat_msg) {
 });
 
 socket.on("private msg", (objMsg) => {
-  console.log(objMsg);
-  console.log(objMsg.from + " " + objMsg.msg);
-  createChatMsg(objMsg.from + " :" + objMsg.msg, "privateMsg");
+  //console.log(objMsg);
+  //console.log(objMsg.from + " " + objMsg.msg);
+  createChatMsg({ username: objMsg.from, text: objMsg.msg }, "privateMsgRec");
 });
 
 socket.on("connection msg", (user) => {
   users.push(user);
-  console.log(users);
+  //console.log(users);
   createOption(user);
-  createChatMsg(
-    "User: " + user.username + " has connect to the chat",
-    "connected"
-  );
+  createConDiscon(user.username + " has connect to the chat", "connected");
 });
 
 socket.on("disconnected msg", (user) => {
@@ -155,8 +190,8 @@ socket.on("disconnected msg", (user) => {
 
   deleteUser(user.userID);
   deletOptionUser(user.userID);
-  createChatMsg(
-    "User:" + user.username + " has disconnected from the chat",
+  createConDiscon(
+    user.username + " has disconnected from the chat",
     "disconnected"
   );
 });
