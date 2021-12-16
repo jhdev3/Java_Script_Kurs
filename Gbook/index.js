@@ -8,7 +8,8 @@ const server = http.createServer(app);
 //Installed ejs för templete engine
 const express = require("express");
 const app = express();
-const port = 2000;
+let port = process.env.PORT || 2000;
+
 
 let routes = require("./routes");
 app.use(express.static(__dirname + "/public"));
