@@ -2,6 +2,8 @@
 Uppgifter och lösningar i kursen JavaScript
 
 
-regExp: Links
+Roliga funktioner: 
 
-email: regexr.com/6a8si
+     Chat: När någon annan skriver message-> har en trevlig animation
+     Gbook: Client and server side validation.
+    
